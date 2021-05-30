@@ -349,7 +349,7 @@ void HomieDevice::Loop()
 					ulConnectTimestamp=millis();
 
 #if defined(USE_PANGOLIN) | defined(USE_ASYNCMQTTCLIENT)
-					mqtt.setServer(ip,1883);//1883
+					mqtt.setServer(ip,MqttServerPort);
 					mqtt.setCredentials(strMqttUserName.c_str(), strMqttPassword.c_str());
 					mqtt.connect();
 #elif defined(USE_ARDUINOMQTT)
@@ -364,7 +364,7 @@ void HomieDevice::Loop()
 					}
 #elif defined(USE_PUBSUBCLIENT)
 					pMQTT->setBufferSize(256);
-					pMQTT->setServer(ip,1883);
+					pMQTT->setServer(ip,MqttServerPort);
 					int ret=pMQTT->connect(strID.c_str(), strMqttUserName.c_str(), strMqttPassword.c_str(), szWillTopic, 1, 1, "lost");
 					if(ret)
 					{

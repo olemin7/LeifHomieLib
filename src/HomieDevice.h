@@ -47,6 +47,7 @@ public:
 	int iInitialPublishingThrottle_ms=200;
 
 	String strMqttServerIP;
+    int MqttServerPort = 1883;
 	String strMqttUserName;
 	String strMqttPassword;
 
